@@ -1,0 +1,45 @@
+<div class="min-h-screen bg-[#ECE7DC]">
+  <header class="bg-[#24262B] sticky top-0 z-10">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-[#D8CBA3]">
+          <path d="M12 2L21 7V17L12 22L3 17V7L12 2Z" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M12 2V22M3 7L12 12L21 7" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+        <div class="leading-tight">
+          <p class="font-display font-bold text-white text-sm tracking-[0.12em] uppercase">Inventory</p>
+          <p class="font-data text-[10px] text-[#8A8676] tracking-[0.15em] uppercase">Control de stock</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-[#B8B3A2] text-sm hidden sm:block">{{ authService.currentUser()?.nombre }}</span>
+        <button (click)="logout()" class="text-[#B8B3A2] hover:text-[#B5651D] text-sm transition font-medium">
+          Salir
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-8">
+    <div class="flex flex-col md:flex-row gap-6">
+      <app-category-sidebar
+        [categorias]="categorias()"
+        [selectedCategoriaId]="selectedCategoriaId()"
+        (select)="onSelectCategoria($event)"
+        (create)="onCreateCategoria($event)"
+        (delete)="onDeleteCategoria($event)"
+      />
+
+      <div class="flex-1">
+        <app-product-form
+          [categorias]="categorias()"
+          (create)="onCreateProducto($event)"
+        />
+        <app-product-list
+          [productos]="productos()"
+          (delete)="onDeleteProducto($event)"
+        />
+      </div>
+    </div>
+  </main>
+</div>

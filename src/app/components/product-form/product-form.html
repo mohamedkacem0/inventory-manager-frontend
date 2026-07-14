@@ -1,0 +1,45 @@
+<form (ngSubmit)="onSubmit()" class="bg-[#F7F3E9] border border-[#CFC6B3] rounded-md p-4 mb-6">
+  <p class="font-data text-[10px] text-[#6B6759] tracking-[0.15em] uppercase mb-3">Nueva entrada</p>
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-2">
+    <input
+      type="text"
+      placeholder="Nombre del producto"
+      [(ngModel)]="nombre"
+      name="nombre"
+      class="col-span-2 px-3 py-2 rounded bg-[#ECE7DC] border border-[#CFC6B3] text-[#24262B] text-sm placeholder-[#9C9686] outline-none focus:ring-1 focus:ring-[#3F6B52] transition"
+    />
+    <input
+      type="number"
+      placeholder="Cantidad"
+      [(ngModel)]="stock"
+      name="stock"
+      min="0"
+      class="font-data px-3 py-2 rounded bg-[#ECE7DC] border border-[#CFC6B3] text-[#24262B] text-sm placeholder-[#9C9686] outline-none focus:ring-1 focus:ring-[#3F6B52] transition"
+    />
+    <input
+      type="number"
+      placeholder="Precio €"
+      [(ngModel)]="precio"
+      name="precio"
+      step="0.01"
+      min="0"
+      class="font-data px-3 py-2 rounded bg-[#ECE7DC] border border-[#CFC6B3] text-[#24262B] text-sm placeholder-[#9C9686] outline-none focus:ring-1 focus:ring-[#3F6B52] transition"
+    />
+    <select
+      [(ngModel)]="categoriaId"
+      name="categoriaId"
+      class="px-3 py-2 rounded bg-[#ECE7DC] border border-[#CFC6B3] text-[#6B6759] text-sm outline-none focus:ring-1 focus:ring-[#3F6B52] transition"
+    >
+      <option [ngValue]="null">Sin categoría</option>
+      @for (cat of categorias; track cat.id) {
+        <option [ngValue]="cat.id">{{ cat.nombre }}</option>
+      }
+    </select>
+  </div>
+  <button
+    type="submit"
+    class="mt-2 w-full bg-[#3F6B52] hover:bg-[#345A44] text-white px-4 py-2 rounded transition text-sm font-semibold"
+  >
+    Registrar producto
+  </button>
+</form>

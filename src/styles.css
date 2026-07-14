@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+:root {
+  --ink: #24262B;
+  --paper: #ECE7DC;
+  --paper-raised: #F7F3E9;
+  --ledger: #3F6B52;
+  --ledger-dark: #345A44;
+  --stamp: #B5651D;
+  --line: #CFC6B3;
+  --muted: #6B6759;
+}
+
+html, body {
+  background: var(--paper);
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  margin: 0;
+}
+
+.font-display {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-data {
+  font-family: 'IBM Plex Mono', monospace;
+}

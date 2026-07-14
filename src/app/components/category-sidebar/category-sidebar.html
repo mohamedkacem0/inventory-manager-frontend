@@ -1,0 +1,43 @@
+<div class="w-full md:w-60 bg-[#F7F3E9] border border-[#CFC6B3] rounded-md h-fit">
+  <p class="font-data text-[10px] text-[#6B6759] tracking-[0.15em] uppercase px-4 pt-4 pb-2">Categorías</p>
+
+  <button
+    (click)="select.emit(null)"
+    [class]="'w-full text-left pl-4 pr-3 py-2.5 text-sm border-l-[3px] transition font-medium ' +
+      (selectedCategoriaId === null ? 'border-l-[#3F6B52] bg-[#ECE7DC] text-[#24262B]' : 'border-l-transparent text-[#6B6759] hover:bg-[#ECE7DC]/60')"
+  >
+    Todos los productos
+  </button>
+
+  @for (cat of categorias; track cat.id) {
+    <div class="group flex items-center border-l-[3px] transition"
+      [class]="selectedCategoriaId === cat.id ? 'border-l-[#3F6B52] bg-[#ECE7DC]' : 'border-l-transparent'">
+      <button
+        (click)="select.emit(cat.id!)"
+        [class]="'flex-1 text-left pl-4 pr-1 py-2.5 truncate text-sm font-medium transition ' +
+          (selectedCategoriaId === cat.id ? 'text-[#24262B]' : 'text-[#6B6759] hover:bg-[#ECE7DC]/60')"
+      >
+        {{ cat.nombre }}
+      </button>
+      <button
+        (click)="delete.emit(cat.id!)"
+        class="text-[#CFC6B3] hover:text-[#B5651D] opacity-0 group-hover:opacity-100 transition px-3 text-xs"
+      >
+        eliminar
+      </button>
+    </div>
+  }
+
+  <div class="p-3 border-t border-[#CFC6B3] mt-1">
+    <div class="flex gap-1">
+      <input
+        type="text"
+        placeholder="Nueva categoría"
+        [(ngModel)]="newCategoria"
+        (keyup.enter)="onCreate()"
+        class="flex-1 px-2.5 py-1.5 text-sm rounded bg-[#ECE7DC] border border-[#CFC6B3] text-[#24262B] placeholder-[#9C9686] outline-none focus:ring-1 focus:ring-[#3F6B52]"
+      />
+      <button (click)="onCreate()" class="text-[#6B6759] hover:text-[#3F6B52] px-2 text-sm font-bold">+</button>
+    </div>
+  </div>
+</div>

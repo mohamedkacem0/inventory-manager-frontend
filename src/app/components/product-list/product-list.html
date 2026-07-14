@@ -1,0 +1,36 @@
+@if (productos.length === 0) {
+  <div class="flex flex-col items-center justify-center py-16 text-center bg-[#F7F3E9] border border-dashed border-[#CFC6B3] rounded-md">
+    <p class="text-[#6B6759] text-sm font-medium">Sin productos registrados</p>
+    <p class="text-[#9C9686] text-xs mt-1 font-data">Añade el primero arriba</p>
+  </div>
+} @else {
+  <div class="space-y-2">
+    @for (p of productos; track p.id) {
+      <div class="group relative flex items-center bg-[#F7F3E9] border border-[#CFC6B3] hover:border-[#B5A98C] rounded-md pl-6 pr-4 py-3 transition">
+        <span class="absolute left-2 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#ECE7DC] border border-[#CFC6B3]"></span>
+
+        <div class="flex-1 min-w-0">
+          <p class="text-[#24262B] text-sm font-semibold truncate">{{ p.nombre }}</p>
+          <p class="text-[#6B6759] text-xs font-data uppercase tracking-wide">{{ p.categoria?.nombre || 'sin categoría' }}</p>
+        </div>
+
+        <div class="border-l border-dashed border-[#CFC6B3] h-8 mx-4"></div>
+
+        <div class="flex items-center gap-4">
+          <div class="text-right font-data">
+            <p class="text-[#24262B] text-sm font-semibold">{{ p.precio }} €</p>
+            <p class="text-xs" [class]="p.stock! < 5 ? 'text-[#B5651D] font-semibold' : 'text-[#6B6759]'">
+              {{ p.stock }} uds{{ p.stock! < 5 ? ' · bajo' : '' }}
+            </p>
+          </div>
+          <button
+            (click)="delete.emit(p.id!)"
+            class="text-[#CFC6B3] hover:text-[#B5651D] transition text-xs font-medium opacity-0 group-hover:opacity-100"
+          >
+            eliminar
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+}
