@@ -36,4 +36,4 @@ https://github.com/mohamedkacem0/inventory-manager-backend
 ![Login](./Inventory_ScreenShots/login.png)
 
 ### Dashboard
-![Dashboard](./Inventory_ScreenShots/proyectoYtareas.png)
+![Dashboard](./Inventory_ScreenShots/dashboard.png)
