@@ -31,3 +31,9 @@ La app arranca en `http://localhost:4200`, apuntando por defecto a un backend en
 
 ## Backend
 https://github.com/mohamedkacem0/inventory-manager-backend
+
+### Login
+![Login](./Inventory_ScreenShots/login.png)
+
+### Dashboard
+![Dashboard](./Inventory_ScreenShots/proyectoYtareas.png)
