@@ -33,9 +33,9 @@ export class Register {
             this.router.navigate(['/dashboard']);
           },
           error: (err) => {
-            this.loading.set(false);
-            this.error.set(err.error || 'Error al iniciar sesión');
-          }
+  this.loading.set(false);
+  this.error.set(err.error?.error || 'Error al iniciar sesión');
+}
         });
       },
       error: (err) => {
